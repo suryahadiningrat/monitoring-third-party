@@ -20,27 +20,27 @@
 ## Phase 2 — Data Layer
 
 ### Seed Data
-- [ ] Buat `src/data/services.json` dengan 12 layanan awal (lihat `database.md` tabel seed)
-- [ ] Generate UUID untuk setiap layanan menggunakan `crypto.randomUUID()`
-- [ ] Set `renewalDate`, `costPerMonth`, `billingCycle` sesuai data di `prd.md`
-- [ ] Pastikan Rumahweb memiliki 2 entry di `accounts` array (primary + sub)
+- [x] Buat `src/data/services.json` dengan 12 layanan awal (lihat `database.md` tabel seed)
+- [x] Generate UUID untuk setiap layanan menggunakan `crypto.randomUUID()`
+- [x] Set `renewalDate`, `costPerMonth`, `billingCycle` sesuai data di `prd.md`
+- [x] Pastikan Rumahweb memiliki 2 entry di `accounts` array (primary + sub)
 
 ### Zustand Store
-- [ ] Buat `src/store/services.store.ts`
-  - [ ] State: `services: Service[]`, `isLoading: boolean`, `lastUpdated: string`
-  - [ ] Actions: `loadServices()`, `addService()`, `updateService()`, `deleteService()` (soft)
-  - [ ] Persist ke `localStorage` menggunakan zustand/middleware `persist`
+- [x] Buat `src/store/services.store.ts`
+  - [x] State: `services: Service[]`, `isLoading: boolean`, `lastUpdated: string`
+  - [x] Actions: `loadServices()`, `addService()`, `updateService()`, `deleteService()` (soft)
+  - [x] Persist ke `localStorage` menggunakan zustand/middleware `persist`
 
 ### Hooks
-- [ ] `useServices()` — CRUD + filter + search
-- [ ] `useReminders()` — filter layanan berdasarkan daysUntilRenewal, sort ascending
-- [ ] `useCostSummary()` — kalkulasi total, breakdown per kategori
-- [ ] `useDashboardStats()` — hitung 5 metric stat card
+- [x] `useServices()` — CRUD + filter + search
+- [x] `useReminders()` — filter layanan berdasarkan daysUntilRenewal, sort ascending
+- [x] `useCostSummary()` — kalkulasi total, breakdown per kategori
+- [x] `useDashboardStats()` — hitung 5 metric stat card
 
 ### Utils
-- [ ] `date.utils.ts` — `daysUntil()`, `getStatus()`, `formatDate()` (locale id-ID)
-- [ ] `currency.utils.ts` — `formatIDR()`, `toMonthly()` (normalisasi cycle ke bulanan)
-- [ ] `export.utils.ts` — `exportToCSV()` dengan header: Nama, Kategori, Email, Biaya/Bulan, Renewal, Status
+- [x] `date.utils.ts` — `daysUntil()`, `getStatus()`, `formatDate()` (locale id-ID)
+- [x] `currency.utils.ts` — `formatIDR()`, `toMonthly()` (normalisasi cycle ke bulanan)
+- [x] `export.utils.ts` — `exportToCSV()` dengan header: Nama, Kategori, Email, Biaya/Bulan, Renewal, Status
 
 ---
 

@@ -1,0 +1,250 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-02T10:00:01.464Z",
+  "services": [
+    {
+      "id": "f25b72da-dc63-4728-bdab-8b39f770ec11",
+      "name": "Niagahoster Domain",
+      "category": "Domain & Hosting",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 150000,
+      "billingCycle": "yearly",
+      "renewalDate": "2025-12-01",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "60fac500-e6d4-45dc-ae5a-7d4c8755c3da",
+      "name": "Webpushr Push Notif",
+      "category": "Push Notification",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 0,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-11-15",
+      "apiConfig": {
+        "status": "pending"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "8c9bb8e1-1e32-4bbc-a186-d8a0a10f25a8",
+      "name": "Mailjet Email Marketing",
+      "category": "Email Marketing",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 200000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-10-20",
+      "apiConfig": {
+        "status": "pending"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "c4225d95-899a-4559-8bee-0ab0bfe3ab71",
+      "name": "Ahrefs",
+      "category": "SEO Tools",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 1500000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-11-01",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "1875ea34-bae7-418c-b434-c7e16cf3fc39",
+      "name": "Semrush",
+      "category": "SEO Tools",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 1800000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-10-10",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "23f9e652-6edb-4c8b-9639-5c9ad5741ef7",
+      "name": "me-QR Code",
+      "category": "QR & Link Tool",
+      "accounts": [
+        {
+          "email": "floothink360@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 50000,
+      "billingCycle": "yearly",
+      "renewalDate": "2026-03-01",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "300b14e1-4f08-4472-8541-d339605d6d64",
+      "name": "Rumahweb",
+      "category": "Domain & Hosting",
+      "accounts": [
+        {
+          "email": "idealivejkt@gmail.com",
+          "label": "Primary"
+        },
+        {
+          "email": "f3brili0@gmail.com",
+          "label": "Sub-account"
+        }
+      ],
+      "costPerMonth": 300000,
+      "billingCycle": "yearly",
+      "renewalDate": "2025-12-15",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "9b5e76d0-8a55-4f9d-954d-51c8bab6f810",
+      "name": "Elastic Email",
+      "category": "Email Marketing",
+      "accounts": [
+        {
+          "email": "suzukihyperlocal@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 80000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-11-30",
+      "apiConfig": {
+        "status": "pending"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "b47c6b10-f03d-4a02-a444-b04534cd1b81",
+      "name": "Qiscus WA Notif",
+      "category": "WhatsApp & Notif",
+      "accounts": [
+        {
+          "email": "integrated.data.platform@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 500000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-10-25",
+      "apiConfig": {
+        "status": "pending"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "0777a5c7-7bae-4ee1-a199-61bae7b07ac8",
+      "name": "Adsmedia OTP",
+      "category": "WhatsApp & Notif",
+      "accounts": [
+        {
+          "email": "suzukihyperlocal@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 200000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-01-01",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "40acf72f-e61f-4459-9c18-ee19dcb3167a",
+      "name": "Google One Drive",
+      "category": "Cloud Storage",
+      "accounts": [
+        {
+          "email": "integrated.data.platform@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 130000,
+      "billingCycle": "monthly",
+      "renewalDate": "2025-11-10",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "5002046b-4a4d-46f2-a8cc-0fa216828219",
+      "name": "Zoom Pro",
+      "category": "Meeting & Collab",
+      "accounts": [
+        {
+          "email": "superuser.global@gmail.com",
+          "label": "Primary"
+        }
+      ],
+      "costPerMonth": 350000,
+      "billingCycle": "yearly",
+      "renewalDate": "2026-02-01",
+      "apiConfig": {
+        "status": "manual"
+      },
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    }
+  ]
+}
