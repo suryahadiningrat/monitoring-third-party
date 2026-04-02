@@ -61,39 +61,39 @@
 
 ---
 
-## Phase 6 — UI Multi-Project & Budget Monitoring
+## Phase 6 — UI Multi-Project & Budget Monitoring ✅
 
 ### Komponen Baru
-- [ ] ProjectBadge.tsx — chip/badge nama project dengan warna
-- [ ] BillingTypeBadge.tsx — badge: Subscription / Usage-Based / Hybrid
-- [ ] BudgetProgressBar.tsx — progress bar warna (hijau/kuning/merah) + persen
-- [ ] UsageCard.tsx — card khusus usage-based: sisa balance, progress, estimasi
-- [ ] ProjectForm.tsx — dialog CRUD project (nama, kontak PM+TL, nomor WA)
-- [ ] AlertRuleForm.tsx — setting threshold alert per layanan
+- [x] ProjectBadge.tsx — chip/badge nama project dengan warna
+- [x] BillingTypeBadge.tsx — badge: Subscription / Usage-Based / Hybrid
+- [x] BudgetProgressBar.tsx — progress bar warna (hijau/kuning/merah) + persen
+- [x] UsageCard.tsx — card khusus usage-based: sisa balance, progress, estimasi
+- [x] ProjectForm.tsx — dialog CRUD project (nama, kontak PM+TL, nomor WA)
+- [x] AlertRuleForm.tsx — setting threshold alert per layanan
 
 ### Update Komponen Existing
-- [ ] ServiceTable.tsx — tambah kolom: Project, Billing Type, Budget Status
-- [ ] ServiceForm.tsx — tambah field: projectId (select), billingType, budgetCap, usageData manual input
-- [ ] SearchFilter.tsx — tambah filter: per project, per billing type
-- [ ] StatCard di Dashboard — tambah card: "Usage Alert" (merah jika ada ≥80%)
-- [ ] CostSummary.tsx — tambah breakdown per project
+- [x] ServiceTable.tsx — tambah kolom: Project, Billing Type, Budget Status
+- [x] ServiceForm.tsx — tambah field: projectId (select), billingType, budgetCap, usageData manual input
+- [x] SearchFilter.tsx — tambah filter: per project, per billing type
+- [x] StatCard di Dashboard — tambah card: "Usage Alert" (merah jika ada ≥80%)
+- [x] CostSummary.tsx — tambah breakdown per project
 
 ### Halaman Baru
-- [ ] src/pages/Projects.tsx
-  - [ ] List semua project (card grid)
-  - [ ] Setiap card: nama, jumlah layanan, total biaya/bln, PM & TL
-  - [ ] Tombol tambah/edit/hapus project
-  - [ ] Klik project → filter Services ke project tersebut
-- [ ] src/pages/UsageMonitor.tsx
-  - [ ] List semua layanan usage-based & hybrid
-  - [ ] Progress bar budget per layanan
-  - [ ] Sisa balance + estimasi habis N hari
-  - [ ] Tombol "Refresh" per layanan (manual sync)
-  - [ ] Alert history per layanan
+- [x] src/pages/Projects.tsx
+  - [x] List semua project (card grid)
+  - [x] Setiap card: nama, jumlah layanan, total biaya/bln, PM & TL
+  - [x] Tombol tambah/edit/hapus project
+  - [x] Klik project → filter Services ke project tersebut
+- [x] src/pages/UsageMonitor.tsx
+  - [x] List semua layanan usage-based & hybrid
+  - [x] Progress bar budget per layanan
+  - [x] Sisa balance + estimasi habis N hari
+  - [x] Tombol "Refresh" per layanan (manual sync)
+  - [x] Alert history per layanan
 
 ### Update Navigation
-- [ ] Tambah menu: "Project" dan "Usage Monitor" di sidebar
-- [ ] Update Dashboard — tambah section "Usage Alert" jika ada yang ≥80%
+- [x] Tambah menu: "Project" dan "Usage Monitor" di sidebar
+- [x] Update Dashboard — tambah section "Usage Alert" jika ada yang ≥80%
 
 ---
 

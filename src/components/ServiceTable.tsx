@@ -12,6 +12,9 @@ import { formatIDR } from '@/utils/currency.utils';
 import { formatDate } from '@/utils/date.utils';
 import { Edit, Trash2 } from 'lucide-react';
 import type { ServiceWithStatus } from '@/types';
+import { ProjectBadge } from './ProjectBadge';
+import { BillingTypeBadge } from './BillingTypeBadge';
+import { useProjects } from '@/hooks/useProjects';
 
 export interface ServiceTableProps {
   services: ServiceWithStatus[];
@@ -20,6 +23,8 @@ export interface ServiceTableProps {
 }
 
 export function ServiceTable({ services, onEdit, onDelete }: ServiceTableProps) {
+  const { projects } = useProjects();
+
   if (services.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-8 text-center bg-muted/20 rounded-md border border-dashed">
@@ -50,6 +55,8 @@ export function ServiceTable({ services, onEdit, onDelete }: ServiceTableProps) 
         <TableHeader>
           <TableRow>
             <TableHead>Nama</TableHead>
+            <TableHead>Project</TableHead>
+            <TableHead>Billing</TableHead>
             <TableHead>Kategori</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Biaya/Bulan</TableHead>
@@ -72,6 +79,12 @@ export function ServiceTable({ services, onEdit, onDelete }: ServiceTableProps) 
                   </div>
                   {service.name}
                 </div>
+              </TableCell>
+              <TableCell>
+                <ProjectBadge project={projects.find(p => p.id === service.projectId)} />
+              </TableCell>
+              <TableCell>
+                <BillingTypeBadge type={service.billingType} />
               </TableCell>
               <TableCell>{service.category}</TableCell>
               <TableCell>

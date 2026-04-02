@@ -21,8 +21,10 @@ import type {
   Service,
   ServiceCategory,
   BillingCycle,
+  BillingType,
   ApiStatus,
 } from '@/types';
+import { useProjects } from '@/hooks/useProjects';
 
 export interface ServiceFormProps {
   open: boolean;
@@ -50,7 +52,13 @@ export function ServiceForm({
   onSubmit,
   initialData,
 }: ServiceFormProps) {
+  const { projects } = useProjects();
   const [name, setName] = useState('');
+  const [projectId, setProjectId] = useState<string>('');
+  const [billingType, setBillingType] = useState<BillingType>('subscription');
+  const [budgetCap, setBudgetCap] = useState<number | ''>('');
+  const [currentUsage, setCurrentUsage] = useState<number | ''>('');
+  const [balance, setBalance] = useState<number | ''>('');
   const [category, setCategory] = useState<ServiceCategory>('Lainnya');
   const [email, setEmail] = useState('');
   const [costPerMonth, setCostPerMonth] = useState<number | ''>('');
@@ -65,6 +73,11 @@ export function ServiceForm({
     if (open) {
       if (initialData) {
         setName(initialData.name);
+        setProjectId(initialData.projectId || '');
+        setBillingType(initialData.billingType || 'subscription');
+        setBudgetCap(initialData.budgetCap ?? '');
+        setCurrentUsage(initialData.usageData?.currentUsage ?? '');
+        setBalance(initialData.usageData?.balance ?? '');
         setCategory(initialData.category);
         setEmail(initialData.accounts[0]?.email || '');
         setCostPerMonth(initialData.costPerMonth);
@@ -76,6 +89,11 @@ export function ServiceForm({
         setNotes(initialData.notes || '');
       } else {
         setName('');
+        setProjectId('');
+        setBillingType('subscription');
+        setBudgetCap('');
+        setCurrentUsage('');
+        setBalance('');
         setCategory('Domain & Hosting');
         setEmail('');
         setCostPerMonth('');
@@ -99,6 +117,9 @@ export function ServiceForm({
       newErrors.costPerMonth = 'Biaya per bulan tidak valid';
     if (!renewalDate) newErrors.renewalDate = 'Tanggal renewal wajib diisi';
 
+    if (!projectId) newErrors.projectId = 'Project wajib dipilih';
+    if (billingType === 'usage-based' && budgetCap === '') newErrors.budgetCap = 'Batas budget wajib diisi untuk layanan usage-based';
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -106,6 +127,14 @@ export function ServiceForm({
 
     onSubmit({
       name,
+      projectId,
+      billingType,
+      budgetCap: budgetCap === '' ? undefined : Number(budgetCap),
+      usageData: {
+        ...(initialData?.usageData || {}),
+        currentUsage: currentUsage === '' ? undefined : Number(currentUsage),
+        balance: balance === '' ? undefined : Number(balance),
+      },
       category,
       accounts: [{ email, label: 'Primary' }],
       costPerMonth: Number(costPerMonth),
@@ -128,7 +157,7 @@ export function ServiceForm({
           </DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 py-4">
+        <form onSubmit={handleSubmit} className="space-y-4 py-4 max-h-[70vh] overflow-y-auto px-1">
           <div className="space-y-2">
             <Label htmlFor="name">Nama Layanan *</Label>
             <Input
@@ -140,6 +169,47 @@ export function ServiceForm({
             {errors.name && (
               <p className="text-xs text-red-500">{errors.name}</p>
             )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="projectId">Project *</Label>
+              <Select
+                value={projectId}
+                onValueChange={(val) => setProjectId(val || '')}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Pilih Project" />
+                </SelectTrigger>
+                <SelectContent>
+                  {projects.map((proj) => (
+                    <SelectItem key={proj.id} value={proj.id}>
+                      {proj.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.projectId && (
+                <p className="text-xs text-red-500">{errors.projectId}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="billingType">Tipe Tagihan *</Label>
+              <Select
+                value={billingType}
+                onValueChange={(val) => setBillingType(val as BillingType)}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="subscription">Subscription</SelectItem>
+                  <SelectItem value="usage-based">Usage-Based</SelectItem>
+                  <SelectItem value="hybrid">Hybrid</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -206,10 +276,52 @@ export function ServiceForm({
                   <SelectItem value="monthly">Bulanan</SelectItem>
                   <SelectItem value="quarterly">Kuartalan</SelectItem>
                   <SelectItem value="yearly">Tahunan</SelectItem>
+                  <SelectItem value="biannual">6 Bulanan</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
+
+          {(billingType === 'usage-based' || billingType === 'hybrid') && (
+            <div className="grid grid-cols-3 gap-4 p-4 border rounded-md bg-muted/20">
+              <div className="space-y-2">
+                <Label htmlFor="budgetCap" className="text-xs">Budget Cap (IDR) *</Label>
+                <Input
+                  id="budgetCap"
+                  type="number"
+                  min="0"
+                  value={budgetCap}
+                  onChange={(e) => setBudgetCap(e.target.value ? Number(e.target.value) : '')}
+                  placeholder="0"
+                />
+                {errors.budgetCap && (
+                  <p className="text-xs text-red-500">{errors.budgetCap}</p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="currentUsage" className="text-xs">Current Usage (IDR)</Label>
+                <Input
+                  id="currentUsage"
+                  type="number"
+                  min="0"
+                  value={currentUsage}
+                  onChange={(e) => setCurrentUsage(e.target.value ? Number(e.target.value) : '')}
+                  placeholder="0"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="balance" className="text-xs">Sisa Balance (IDR)</Label>
+                <Input
+                  id="balance"
+                  type="number"
+                  min="0"
+                  value={balance}
+                  onChange={(e) => setBalance(e.target.value ? Number(e.target.value) : '')}
+                  placeholder="0"
+                />
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">

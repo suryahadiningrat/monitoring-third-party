@@ -7,12 +7,15 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Search } from 'lucide-react';
-import type { ServiceCategory, ServiceStatus } from '@/types';
+import type { ServiceCategory, ServiceStatus, BillingType } from '@/types';
+import { useProjects } from '@/hooks/useProjects';
 
 export interface SearchFilterProps {
   onSearch: (query: string) => void;
   onFilterStatus: (status: ServiceStatus | 'All') => void;
   onFilterCategory: (category: ServiceCategory | 'All') => void;
+  onFilterProject?: (projectId: string | 'All') => void;
+  onFilterBillingType?: (billingType: BillingType | 'All') => void;
   categories: ServiceCategory[];
 }
 
@@ -20,8 +23,12 @@ export function SearchFilter({
   onSearch,
   onFilterStatus,
   onFilterCategory,
+  onFilterProject,
+  onFilterBillingType,
   categories,
 }: SearchFilterProps) {
+  const { projects } = useProjects();
+
   return (
     <div className="flex flex-col sm:flex-row gap-4 w-full">
       <div className="relative flex-1">
@@ -48,7 +55,7 @@ export function SearchFilter({
         </Select>
 
         <Select defaultValue="All" onValueChange={(val) => onFilterCategory(val as ServiceCategory | 'All')}>
-          <SelectTrigger className="w-full sm:w-[200px]">
+          <SelectTrigger className="w-full sm:w-[160px]">
             <SelectValue placeholder="Kategori" />
           </SelectTrigger>
           <SelectContent>
@@ -60,6 +67,36 @@ export function SearchFilter({
             ))}
           </SelectContent>
         </Select>
+
+        {onFilterProject && (
+          <Select defaultValue="All" onValueChange={(val) => onFilterProject(val || 'All')}>
+            <SelectTrigger className="w-full sm:w-[150px]">
+              <SelectValue placeholder="Project" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">Semua Project</SelectItem>
+              {projects.map((p) => (
+                <SelectItem key={p.id} value={p.id}>
+                  {p.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+
+        {onFilterBillingType && (
+          <Select defaultValue="All" onValueChange={(val) => onFilterBillingType(val as BillingType | 'All')}>
+            <SelectTrigger className="w-full sm:w-[150px]">
+              <SelectValue placeholder="Tipe Tagihan" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">Semua Tipe</SelectItem>
+              <SelectItem value="subscription">Subscription</SelectItem>
+              <SelectItem value="usage-based">Usage-Based</SelectItem>
+              <SelectItem value="hybrid">Hybrid</SelectItem>
+            </SelectContent>
+          </Select>
+        )}
       </div>
     </div>
   );

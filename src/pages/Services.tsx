@@ -31,6 +31,8 @@ export function Services() {
     setSearchQuery,
     setCategoryFilter,
     setStatusFilter,
+    setProjectFilter,
+    setBillingTypeFilter,
   } = useServices();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -83,6 +85,8 @@ export function Services() {
           onSearch={setSearchQuery}
           onFilterCategory={setCategoryFilter}
           onFilterStatus={setStatusFilter}
+          onFilterProject={setProjectFilter}
+          onFilterBillingType={setBillingTypeFilter}
           categories={CATEGORIES}
         />
       </div>

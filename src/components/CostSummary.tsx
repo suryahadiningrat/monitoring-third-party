@@ -113,6 +113,53 @@ export function CostSummary({ summary }: CostSummaryProps) {
           </CardContent>
         </Card>
 
+        {/* Breakdown Table by Project */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Rincian per Project</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Project</TableHead>
+                  <TableHead className="text-right">Bulanan</TableHead>
+                  <TableHead className="text-right">%</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {summary.byProject.map((proj) => (
+                  <TableRow key={proj.projectId}>
+                    <TableCell className="font-medium">
+                      <div className="flex flex-col">
+                        <span>{proj.projectName}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {proj.count} layanan
+                        </span>
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatIDR(proj.monthly)}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {proj.percentage.toFixed(1)}%
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {summary.byProject.length === 0 && (
+                  <TableRow>
+                    <TableCell colSpan={3} className="text-center text-muted-foreground">
+                      Belum ada data project.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
         {/* Bar Chart */}
         <Card>
           <CardHeader>

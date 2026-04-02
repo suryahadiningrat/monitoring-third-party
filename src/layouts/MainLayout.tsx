@@ -1,11 +1,13 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { LayoutDashboard, Server, Bell, DollarSign } from 'lucide-react';
+import { LayoutDashboard, Server, Bell, DollarSign, FolderKanban, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function MainLayout() {
   const navItems = [
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'Projects', path: '/projects', icon: FolderKanban },
     { name: 'Layanan', path: '/services', icon: Server },
+    { name: 'Usage Monitor', path: '/usage', icon: Activity },
     { name: 'Pengingat', path: '/reminders', icon: Bell },
     { name: 'Biaya', path: '/costs', icon: DollarSign },
   ];
