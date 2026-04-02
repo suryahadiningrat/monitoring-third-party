@@ -2,172 +2,176 @@
 
 ## Tech Stack
 
-### Frontend
-- **Framework**: React 18 (Vite sebagai bundler)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v3
-- **UI Components**: shadcn/ui
-- **State Management**: Zustand
-- **Data Fetching**: TanStack Query (React Query v5)
+### Frontend (v1 — sudah running)
+- **Framework**: React 18 + Vite
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS v3 + shadcn/ui
+- **State Management**: Zustand + persist middleware
+- **Data Fetching**: TanStack Query v5
 - **Routing**: React Router v6
 - **Icons**: Lucide React
 - **Charts**: Recharts
-- **Date Handling**: date-fns
+- **Date**: date-fns
 
-### Backend (Opsional — jika diperlukan server)
+### Backend (v2 — akan ditambahkan)
 - **Runtime**: Node.js 20+
-- **Framework**: Express.js atau Hono (lightweight)
-- **Language**: TypeScript
+- **Framework**: Hono (lightweight, TypeScript-first) atau Express.js
+- **Purpose**:
+  1. Proxy API third party (hindari CORS)
+  2. Scheduler polling usage data setiap 1 jam
+  3. Kirim notifikasi WhatsApp via Qiscus WA API
+  4. Handle GCP Service Account credentials (tidak boleh di frontend)
 
 ### Penyimpanan Data
-- **Utama**: File JSON lokal (`data/services.json`) — simple, tidak perlu database
-- **Opsional v2**: SQLite (via better-sqlite3) jika data makin besar
-
-### API Integration Layer
-- Setiap third party memiliki adapter tersendiri di `src/adapters/`
-- Pattern: setiap adapter mengekspos fungsi `fetchStatus(config): Promise<ServiceStatus>`
-- HTTP client: native `fetch` atau `axios`
-
-### Development Tools
-- **Package Manager**: npm atau pnpm
-- **Linting**: ESLint + Prettier
-- **Type Checking**: TypeScript strict mode
-- **Git**: Conventional commits
+- **v1**: localStorage + JSON (pure frontend)
+- **v2**: SQLite via better-sqlite3 (untuk alert log, history usage)
 
 ---
 
-## Struktur Folder Project
+## Struktur Folder (v1.5 — Target)
 
 ```
 third-party-monitor/
-├── public/
 ├── src/
-│   ├── adapters/              # API adapter per layanan
-│   │   ├── base.adapter.ts    # Interface dasar semua adapter
-│   │   ├── niagahoster.ts
-│   │   ├── webpushr.ts
-│   │   ├── mailjet.ts
-│   │   ├── ahrefs.ts
-│   │   ├── semrush.ts
-│   │   ├── rumahweb.ts
-│   │   ├── elastic-email.ts
-│   │   ├── qiscus.ts
-│   │   ├── adsmedia.ts
-│   │   ├── google-drive.ts
-│   │   └── zoom.ts
+│   ├── adapters/
+│   │   ├── base.adapter.ts
+│   │   ├── qiscus-balance.ts      # fetch saldo balance Qiscus
+│   │   ├── adsmedia.ts            # fetch saldo Adsmedia (jika ada API)
+│   │   └── manual.ts              # fallback untuk layanan tanpa API
 │   ├── components/
-│   │   ├── ui/                # shadcn/ui base components
-│   │   ├── ServiceTable.tsx
-│   │   ├── ServiceForm.tsx
-│   │   ├── StatCard.tsx
-│   │   ├── ReminderList.tsx
-│   │   ├── CostSummary.tsx
-│   │   └── StatusBadge.tsx
+│   │   ├── ui/                    # shadcn/ui
+│   │   ├── ServiceTable.tsx       # ✅ update: tambah kolom project & billing type
+│   │   ├── ServiceForm.tsx        # ✅ update: tambah field project, billingType, budgetCap
+│   │   ├── StatCard.tsx           # ✅
+│   │   ├── ReminderList.tsx       # ✅
+│   │   ├── CostSummary.tsx        # ✅ update: breakdown per project
+│   │   ├── SearchFilter.tsx       # ✅ update: filter per project & billing type
+│   │   ├── StatusBadge.tsx        # ✅
+│   │   ├── ApiStatusBadge.tsx     # ✅
+│   │   ├── ProjectBadge.tsx       # 🆕 chip nama project
+│   │   ├── BillingTypeBadge.tsx   # 🆕 Subscription / Usage-Based / Hybrid
+│   │   ├── BudgetProgressBar.tsx  # 🆕 progress bar hijau/kuning/merah
+│   │   ├── UsageCard.tsx          # 🆕 card usage-based lengkap
+│   │   ├── ProjectForm.tsx        # 🆕 CRUD project
+│   │   └── AlertRuleForm.tsx      # 🆕 setting threshold alert
 │   ├── hooks/
-│   │   ├── useServices.ts     # CRUD operations
-│   │   ├── useReminders.ts
-│   │   └── useCostSummary.ts
+│   │   ├── useServices.ts         # ✅
+│   │   ├── useReminders.ts        # ✅
+│   │   ├── useCostSummary.ts      # ✅ update: breakdown per project
+│   │   ├── useDashboardStats.ts   # ✅ update: tambah budgetAlertCount
+│   │   ├── useProjects.ts         # 🆕 CRUD project
+│   │   ├── useServicesByProject.ts # 🆕
+│   │   ├── useBudgetStatus.ts     # 🆕
+│   │   ├── useUsageBasedServices.ts # 🆕
+│   │   └── useAlertLogs.ts        # 🆕
 │   ├── store/
-│   │   └── services.store.ts  # Zustand store
+│   │   ├── services.store.ts      # ✅ update: tambah billingType, budgetCap, usageData
+│   │   ├── projects.store.ts      # 🆕
+│   │   └── alerts.store.ts        # 🆕
 │   ├── types/
-│   │   └── index.ts           # TypeScript interfaces
+│   │   └── index.ts               # ✅ update: Project, AlertContact, UsageData, AlertRule
 │   ├── utils/
-│   │   ├── date.utils.ts
-│   │   ├── currency.utils.ts
-│   │   └── export.utils.ts
+│   │   ├── date.utils.ts          # ✅
+│   │   ├── currency.utils.ts      # ✅
+│   │   ├── export.utils.ts        # ✅
+│   │   ├── budget.utils.ts        # 🆕 calcBudgetPercent, estimateDaysLeft
+│   │   └── alert.utils.ts         # 🆕 buildAlertMessage
 │   ├── data/
-│   │   └── services.json      # Persistent local data
+│   │   └── app-data.json          # 🆕 ganti services.json, include projects
 │   ├── pages/
-│   │   ├── Dashboard.tsx
-│   │   ├── Services.tsx
-│   │   ├── Reminders.tsx
-│   │   └── Costs.tsx
-│   ├── App.tsx
+│   │   ├── Dashboard.tsx          # ✅ update: tambah usage alert section
+│   │   ├── Services.tsx           # ✅ update: filter per project
+│   │   ├── Reminders.tsx          # ✅
+│   │   ├── Costs.tsx              # ✅ update: breakdown per project
+│   │   ├── Projects.tsx           # 🆕
+│   │   └── UsageMonitor.tsx       # 🆕
+│   ├── App.tsx                    # ✅ update: tambah route Projects & UsageMonitor
 │   └── main.tsx
-├── prd.md
-├── stack.md
-├── database.md
-├── checklist.md
-├── prompts.md
+│
+├── server/                        # 🆕 v2 — backend proxy & scheduler
+│   ├── adapters/
+│   │   └── gcp-billing.ts         # GCP Billing API (butuh Service Account)
+│   ├── services/
+│   │   └── qiscus-wa.service.ts   # Kirim WA notification
+│   ├── routes/
+│   │   ├── notify.ts              # POST /api/notify/whatsapp
+│   │   └── sync.ts                # GET /api/sync/:serviceId
+│   └── index.ts                   # Entry point server
+│
+├── docs/                          # project documentation
+│   ├── prd.md
+│   ├── stack.md
+│   ├── database.md
+│   ├── checklist.md
+│   ├── prompts.md
+│   ├── api-adapters.md
+│   └── project-rules.md
+│
+├── .env.local
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
 └── vite.config.ts
 ```
 
----
-
-## Cara Menjalankan Project
-
-```bash
-# Install dependencies
-npm install
-
-# Development
-npm run dev
-
-# Build production
-npm run build
-
-# Preview build
-npm run preview
-```
+Legend: ✅ sudah ada | 🆕 akan dibuat
 
 ---
 
-## Environment Variables
-
-Buat file `.env.local` di root project:
+## Environment Variables (Updated)
 
 ```env
-# Webpushr
+# ─── Qiscus WA Notification ───────────────────────────────
+VITE_QISCUS_WA_APP_ID=
+VITE_QISCUS_WA_SECRET=
+VITE_QISCUS_WA_SENDER_NUMBER=   # nomor WA pengirim (format: 628xxx)
+
+# ─── Qiscus Balance Monitoring ───────────────────────────
+VITE_QISCUS_BALANCE_APP_ID=
+VITE_QISCUS_BALANCE_SECRET=
+
+# ─── Google Cloud Billing (v2 — server only, jangan di VITE_) ──
+GCP_SERVICE_ACCOUNT_KEY_PATH=./server/credentials/gcp-sa.json
+GCP_BILLING_ACCOUNT_ID=
+
+# ─── Adsmedia ─────────────────────────────────────────────
+VITE_ADSMEDIA_API_KEY=
+
+# ─── Webpushr ─────────────────────────────────────────────
 VITE_WEBPUSHR_API_KEY=
 VITE_WEBPUSHR_AUTH_KEY=
 
-# Mailjet
+# ─── Mailjet ──────────────────────────────────────────────
 VITE_MAILJET_API_KEY=
 VITE_MAILJET_SECRET_KEY=
 
-# Ahrefs
+# ─── Ahrefs ───────────────────────────────────────────────
 VITE_AHREFS_API_KEY=
 
-# Semrush
+# ─── Semrush ──────────────────────────────────────────────
 VITE_SEMRUSH_API_KEY=
 
-# Elastic Email
+# ─── Elastic Email ────────────────────────────────────────
 VITE_ELASTIC_EMAIL_API_KEY=
 
-# Qiscus
-VITE_QISCUS_APP_ID=
-VITE_QISCUS_SECRET_KEY=
-
-# Zoom
+# ─── Zoom ─────────────────────────────────────────────────
 VITE_ZOOM_CLIENT_ID=
 VITE_ZOOM_CLIENT_SECRET=
-
-# me-QR
-VITE_MEQR_API_KEY=
+VITE_ZOOM_ACCOUNT_ID=
 ```
 
-> Layanan yang tidak memiliki public API (Niagahoster, Rumahweb, Adsmedia) menggunakan mode manual.
+> ⚠️ Variabel `GCP_*` TIDAK boleh di prefix `VITE_` karena mengandung credentials sensitif.
+> Hanya diakses dari server/, bukan dari browser.
 
 ---
 
-## Dependency Versions (Pinned)
+## Catatan GCP Billing API
 
-```json
-{
-  "react": "^18.3.0",
-  "react-dom": "^18.3.0",
-  "typescript": "^5.4.0",
-  "vite": "^5.2.0",
-  "tailwindcss": "^3.4.0",
-  "zustand": "^4.5.0",
-  "@tanstack/react-query": "^5.40.0",
-  "react-router-dom": "^6.23.0",
-  "recharts": "^2.12.0",
-  "date-fns": "^3.6.0",
-  "lucide-react": "^0.383.0",
-  "axios": "^1.7.0"
-}
-```
+Cloud Billing API di screenshot menunjukkan status **"Enable"** (belum aktif) untuk project Suzuki Hyperlocal. Untuk mengaktifkan:
+
+1. Klik "Enable" di halaman Cloud Billing API
+2. Buat Service Account baru dengan role **"Billing Account Viewer"**
+3. Download credentials JSON → simpan di `server/credentials/gcp-sa.json`
+4. Jangan commit file ini ke Git (tambahkan ke .gitignore)
+
+Service Account yang sudah ada (`firebase-adminsdk`, `google-sheets`) belum memiliki akses ke Billing API — perlu dibuat service account baru khusus untuk billing monitoring.

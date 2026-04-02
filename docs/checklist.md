@@ -1,168 +1,189 @@
 # Checklist — Third Party Service Monitor
 
-## Phase 1 — Setup & Struktur Project
+## Phase 1 — Setup & Struktur Project ✅
+- [x] Vite + React + TypeScript
+- [x] Dependencies installed
+- [x] shadcn/ui initialized
+- [x] Tailwind CSS configured
+- [x] Folder structure
+- [x] .env.local template
+- [x] ESLint + Prettier
+- [x] TypeScript interfaces (src/types/index.ts)
 
-### Inisialisasi
-- [x] `npm create vite@latest third-party-monitor -- --template react-ts`
-- [x] Install dependencies: `npm install tailwindcss @tailwindcss/vite zustand @tanstack/react-query react-router-dom recharts date-fns lucide-react axios`
-- [x] Install shadcn/ui: `npx shadcn@latest init`
-- [x] Setup Tailwind CSS config
-- [x] Setup folder struktur sesuai `stack.md`
-- [x] Buat file `.env.local` dari template di `stack.md`
-- [x] Setup ESLint + Prettier
+## Phase 2 — Data Layer ✅
+- [x] src/data/services.json seed data (12 layanan)
+- [x] Zustand store dengan persist ke localStorage
+- [x] useServices(), useReminders(), useCostSummary(), useDashboardStats()
+- [x] date.utils.ts, currency.utils.ts, export.utils.ts
 
-### Types & Interfaces
-- [x] Buat `src/types/index.ts` — implementasi semua interface dari `database.md`
-- [x] Pastikan TypeScript strict mode aktif di `tsconfig.json`
+## Phase 3 — UI Components ✅
+- [x] shadcn/ui: Button, Input, Select, Dialog, Badge, Table, Tabs, Card
+- [x] StatusBadge, ApiStatusBadge, StatCard
+- [x] ServiceTable (sort, empty state)
+- [x] ServiceForm (add/edit dialog, validasi)
+- [x] ReminderList, CostSummary, SearchFilter
 
----
-
-## Phase 2 — Data Layer
-
-### Seed Data
-- [x] Buat `src/data/services.json` dengan 12 layanan awal (lihat `database.md` tabel seed)
-- [x] Generate UUID untuk setiap layanan menggunakan `crypto.randomUUID()`
-- [x] Set `renewalDate`, `costPerMonth`, `billingCycle` sesuai data di `prd.md`
-- [x] Pastikan Rumahweb memiliki 2 entry di `accounts` array (primary + sub)
-
-### Zustand Store
-- [x] Buat `src/store/services.store.ts`
-  - [x] State: `services: Service[]`, `isLoading: boolean`, `lastUpdated: string`
-  - [x] Actions: `loadServices()`, `addService()`, `updateService()`, `deleteService()` (soft)
-  - [x] Persist ke `localStorage` menggunakan zustand/middleware `persist`
-
-### Hooks
-- [x] `useServices()` — CRUD + filter + search
-- [x] `useReminders()` — filter layanan berdasarkan daysUntilRenewal, sort ascending
-- [x] `useCostSummary()` — kalkulasi total, breakdown per kategori
-- [x] `useDashboardStats()` — hitung 5 metric stat card
-
-### Utils
-- [x] `date.utils.ts` — `daysUntil()`, `getStatus()`, `formatDate()` (locale id-ID)
-- [x] `currency.utils.ts` — `formatIDR()`, `toMonthly()` (normalisasi cycle ke bulanan)
-- [x] `export.utils.ts` — `exportToCSV()` dengan header: Nama, Kategori, Email, Biaya/Bulan, Renewal, Status
+## Phase 4 — Pages & Routing ✅
+- [x] App.tsx + React Router v6
+- [x] Sidebar desktop + bottom navbar mobile
+- [x] Dashboard.tsx (stats, reminder preview, tambah layanan)
+- [x] Services.tsx (tabel + filter + export CSV)
+- [x] Reminders.tsx (filter tabs: semua/kritis/perhatian/aman)
+- [x] Costs.tsx (ringkasan + chart)
 
 ---
 
-## Phase 3 — UI Components
+## Phase 5 — Multi-Project & Usage-Based Billing (v1.5)
 
-### Base Components (shadcn/ui)
-- [x] Install: Button, Input, Select, Dialog, Badge, Table, Tabs, Card
-- [x] Sesuaikan theme warna di `tailwind.config.ts`
+### Data Model Refactor
+- [ ] Update src/types/index.ts — tambah interface: `Project`, `AlertContact`, `UsageData`, `AlertRule`, `AlertLog`, `AppData`
+- [ ] Update src/types/index.ts — tambah field di `Service`: `projectId`, `billingType`, `budgetCap`, `usageData`, `alertRules`
+- [ ] Tambah `BillingType` = `'subscription' | 'usage-based' | 'hybrid'`
+- [ ] Tambah `BillingCycle` = `'biannual'` (untuk Qiscus 6 bulanan)
+- [ ] Buat src/data/app-data.json — gabungan projects + services + alertLogs
+- [ ] Migrate seed data ke struktur baru (13 layanan + 3 project awal)
 
-### Custom Components
-- [x] `StatusBadge.tsx` — props: `status: ServiceStatus`, render badge warna sesuai
-  - [x] `ok` → hijau
-  - [x] `warn` → kuning/amber
-  - [x] `danger` → merah
-  - [x] `unknown` → abu-abu
-- [x] `ApiStatusBadge.tsx` — props: `apiStatus: ApiStatus`
-- [x] `StatCard.tsx` — props: `label`, `value`, `sub`, `color?`
-- [x] `ServiceTable.tsx`
-  - [x] Kolom: Nama + ikon inisial, Kategori, Email, Biaya/Bulan, Renewal + days, Status, Aksi
-  - [x] Fitur sort per kolom
-  - [x] Empty state ketika tidak ada hasil filter
-- [x] `ServiceForm.tsx` — form tambah/edit dalam Dialog/Modal
-  - [x] Field: name, category (dropdown), accounts (email + label), costPerMonth, billingCycle, renewalDate, apiStatus, notes
-  - [x] Validasi: name wajib, email valid, costPerMonth ≥ 0, renewalDate valid
-- [x] `ReminderList.tsx` — list item dengan warna dot per status, sorted by renewal
-- [x] `CostSummary.tsx` — total card + tabel breakdown + mini bar chart (Recharts)
-- [x] `SearchFilter.tsx` — input search + select status + select kategori
+### Store Refactor
+- [ ] Buat src/store/projects.store.ts — CRUD project, persist localStorage
+- [ ] Update src/store/services.store.ts — tambah projectId, billingType, budgetCap, usageData
+- [ ] Buat src/store/alerts.store.ts — CRUD alert log, persist localStorage
 
----
+### Hooks Baru
+- [ ] useProjects() — CRUD project
+- [ ] useServicesByProject(projectId) — filter services per project
+- [ ] useBudgetStatus(serviceId) — hitung budgetUsedPercent, return status
+- [ ] useUsageBasedServices() — filter hanya usage-based, sort by budgetUsedPercent desc
+- [ ] useAlertLogs() — list alert history
 
-## Phase 4 — Pages & Routing
-
-### Layout
-- [x] `src/App.tsx` — setup React Router dengan layout shell (sidebar/navbar)
-- [x] Sidebar/Navbar dengan link: Dashboard, Layanan, Pengingat, Biaya
-
-### Pages
-- [x] `Dashboard.tsx`
-  - [x] Render 5 `StatCard` dari `useDashboardStats()`
-  - [x] Preview 5 layanan dengan renewal terdekat (`useReminders()`)
-  - [x] Tombol quick-add layanan baru
-- [x] `Services.tsx`
-  - [x] `SearchFilter` + `ServiceTable`
-  - [x] Tombol "Tambah Layanan" buka `ServiceForm` dialog
-  - [x] Tombol "Export CSV" trigger `exportToCSV()`
-- [x] `Reminders.tsx`
-  - [x] Full list dari `useReminders()`
-  - [x] Filter: Semua / Kritis / Perlu Perhatian / Aman
-- [x] `Costs.tsx`
-  - [x] `CostSummary` component full width
+### Utils Baru
+- [ ] budget.utils.ts — calcBudgetPercent(), getBudgetStatus(), estimateDaysLeft()
+- [ ] alert.utils.ts — buildAlertMessage(service, project, threshold)
 
 ---
 
-## Phase 5 — API Integration
+## Phase 6 — UI Multi-Project & Budget Monitoring
 
-### Adapter Layer
-- [ ] Buat `src/adapters/base.adapter.ts` — interface `ServiceAdapter`
-- [ ] Implementasi adapter sesuai `api-adapters.md`:
-  - [ ] `webpushr.ts`
-  - [ ] `mailjet.ts`
-  - [ ] `ahrefs.ts`
-  - [ ] `semrush.ts`
-  - [ ] `elastic-email.ts`
-  - [ ] `qiscus.ts`
-  - [ ] `zoom.ts`
-  - [ ] `manual.ts` (fallback)
-- [ ] `src/adapters/index.ts` — registry + `getAdapter()` function
+### Komponen Baru
+- [ ] ProjectBadge.tsx — chip/badge nama project dengan warna
+- [ ] BillingTypeBadge.tsx — badge: Subscription / Usage-Based / Hybrid
+- [ ] BudgetProgressBar.tsx — progress bar warna (hijau/kuning/merah) + persen
+- [ ] UsageCard.tsx — card khusus usage-based: sisa balance, progress, estimasi
+- [ ] ProjectForm.tsx — dialog CRUD project (nama, kontak PM+TL, nomor WA)
+- [ ] AlertRuleForm.tsx — setting threshold alert per layanan
 
-### Sync Logic
-- [ ] Hook `useApiSync(serviceId)` — trigger fetch adapter, update `liveData` di store
-- [ ] Tampilkan `liveData` di ServiceTable (kolom tambahan atau tooltip)
-- [ ] Tampilkan `lastSynced` timestamp per layanan
-- [ ] Handle CORS error dengan pesan yang jelas di UI
-- [ ] Setup Vite proxy untuk API yang butuh proxy (lihat `api-adapters.md`)
+### Update Komponen Existing
+- [ ] ServiceTable.tsx — tambah kolom: Project, Billing Type, Budget Status
+- [ ] ServiceForm.tsx — tambah field: projectId (select), billingType, budgetCap, usageData manual input
+- [ ] SearchFilter.tsx — tambah filter: per project, per billing type
+- [ ] StatCard di Dashboard — tambah card: "Usage Alert" (merah jika ada ≥80%)
+- [ ] CostSummary.tsx — tambah breakdown per project
 
----
+### Halaman Baru
+- [ ] src/pages/Projects.tsx
+  - [ ] List semua project (card grid)
+  - [ ] Setiap card: nama, jumlah layanan, total biaya/bln, PM & TL
+  - [ ] Tombol tambah/edit/hapus project
+  - [ ] Klik project → filter Services ke project tersebut
+- [ ] src/pages/UsageMonitor.tsx
+  - [ ] List semua layanan usage-based & hybrid
+  - [ ] Progress bar budget per layanan
+  - [ ] Sisa balance + estimasi habis N hari
+  - [ ] Tombol "Refresh" per layanan (manual sync)
+  - [ ] Alert history per layanan
 
-## Phase 6 — Polish & QA
-
-### UI/UX
-- [ ] Responsive layout (mobile-friendly)
-- [ ] Loading skeleton saat data loading
-- [ ] Toast notification setelah save/delete berhasil
-- [ ] Konfirmasi dialog sebelum delete
-- [ ] Form validation dengan pesan error yang jelas
-
-### Edge Cases
-- [ ] Layanan tanpa `renewalDate` → tampilkan "-" dan status "unknown"
-- [ ] `costPerMonth: 0` → tampilkan "Gratis" bukan "Rp 0"
-- [ ] `renewalDate` sudah lewat → status "danger" + label "Sudah lewat"
-- [ ] Layanan soft-deleted tidak muncul di tabel (filter `isActive: true`)
-
-### Testing Manual
-- [ ] Tambah layanan baru → muncul di tabel
-- [ ] Edit layanan → data terupdate
-- [ ] Delete layanan → hilang dari tabel, tersimpan sebagai `isActive: false`
-- [ ] Filter status "Kritis" → hanya tampilkan yang ≤7 hari
-- [ ] Export CSV → file terdownload, data valid
-- [ ] Semua 12 layanan awal tampil dengan benar
+### Update Navigation
+- [ ] Tambah menu: "Project" dan "Usage Monitor" di sidebar
+- [ ] Update Dashboard — tambah section "Usage Alert" jika ada yang ≥80%
 
 ---
 
-## Phase 7 — Deployment (Opsional)
+## Phase 7 — Notifikasi WhatsApp via Qiscus (v2)
 
-- [ ] Build: `npm run build`
-- [ ] Deploy ke Vercel / Netlify / Cloudflare Pages
-- [ ] Set environment variables di platform deployment
-- [ ] Pastikan semua route berfungsi (tambahkan `_redirects` atau `vercel.json` untuk SPA)
+### Setup Backend Proxy
+- [ ] Buat server/ folder dengan Express + TypeScript (Hono sebagai alternatif)
+- [ ] Endpoint: POST /api/notify/whatsapp
+- [ ] Endpoint: GET /api/sync/:serviceId (proxy ke API third party)
+- [ ] Setup CORS untuk development
+
+### Qiscus WA Integration
+- [ ] Konfigurasi Qiscus WA API credentials di .env
+- [ ] Buat src/services/qiscus-wa.service.ts — fungsi sendWhatsApp(to, message)
+- [ ] Template pesan alert:
+  ```
+  ⚠️ *Budget Alert — [Nama Layanan]*
+  Project: [Nama Project]
+  Usage: Rp X.XXX.XXX / Rp X.XXX.XXX (XX%)
+  Status: Mendekati batas budget!
+  Segera cek dashboard: [URL]
+  ```
+- [ ] Log setiap pengiriman ke alerts.store
+
+### Alert Trigger Logic
+- [ ] Cek threshold saat usageData diupdate
+- [ ] Jangan kirim duplikat — cek lastTriggeredAt per threshold
+- [ ] Reset trigger jika memasuki bulan baru
+- [ ] Tombol "Test Alert" di UI untuk verifikasi
+
+---
+
+## Phase 8 — API Integration Real-Time (v2)
+
+### GCP Billing API
+- [ ] Setup Service Account di GCP Console (lihat api-adapters.md)
+- [ ] Download credentials JSON → simpan di server/, jangan di frontend
+- [ ] Buat adapter: server/adapters/gcp-billing.ts
+  - [ ] Endpoint: GET billing bulan berjalan per project
+  - [ ] Parse response → update usageData di store
+- [ ] Auto-refresh setiap 1 jam via setInterval di backend
+
+### Qiscus Balance API
+- [ ] Buat adapter: src/adapters/qiscus-balance.ts
+- [ ] Endpoint: GET saldo balance + usage hari ini
+- [ ] Update usageData.balance dan usageData.usageToday
+
+### Adsmedia API
+- [ ] Cek dokumentasi Adsmedia untuk endpoint balance
+- [ ] Buat adapter: src/adapters/adsmedia.ts
+- [ ] Handle jika tidak ada public API → fallback manual input
+
+---
+
+## Phase 9 — Polish & QA (v1.5)
+
+- [ ] Responsive semua halaman baru (mobile-friendly)
+- [ ] Loading skeleton untuk UsageMonitor saat fetch data
+- [ ] Toast notification: save/delete berhasil, alert terkirim
+- [ ] Konfirmasi dialog sebelum delete project/service
+- [ ] Empty state yang informatif untuk semua halaman
+- [ ] Validasi: budgetCap wajib diisi jika billingType = usage-based
+- [ ] Edge case: usage-based tanpa budgetCap → tampilkan peringatan
+- [ ] Testing manual semua CRUD flow
+
+---
+
+## Phase 10 — Deployment
+
+- [ ] npm run build — pastikan no error
+- [ ] Deploy frontend ke Vercel / Netlify
+- [ ] Deploy backend (jika ada) ke Railway / Render / VPS
+- [ ] Set semua environment variables di platform
+- [ ] Setup _redirects untuk SPA routing
+- [ ] Verifikasi alert WA berjalan di production
 
 ---
 
 ## Prioritas Pengerjaan
 
 ```
-[MUST HAVE - v1]
-Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 6 (QA dasar)
+[SELESAI - v1]
+Phase 1 → 4 ✅
 
-[NICE TO HAVE - v1.5]
-Phase 5 (API Integration) — dimulai dari layanan yang memiliki API paling mudah
+[NEXT SPRINT - v1.5]
+Phase 5 (Data Model) → Phase 6 (UI) → Phase 9 (QA)
 
-[LATER - v2]
-Phase 7 (Deployment)
-Notifikasi email/WhatsApp saat renewal dekat
-Multi-user authentication
+[SPRINT BERIKUTNYA - v2]
+Phase 7 (WA Notif) → Phase 8 (API Real-Time)
+
+[OPTIONAL]
+Phase 10 (Deployment)
 ```
