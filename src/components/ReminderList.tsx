@@ -52,7 +52,7 @@ export function ReminderList({ services, limit }: ReminderListProps) {
               <div className="flex items-start gap-3">
                 <div
                   className={`mt-1.5 h-2.5 w-2.5 rounded-full flex-shrink-0 ${getStatusColor(
-                    service.status
+                    service.renewalStatus
                   )}`}
                 />
                 <div>

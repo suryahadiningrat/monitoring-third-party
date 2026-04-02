@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Service } from '../types';
-import seedData from '../data/services.json';
+import appData from '../data/app-data.json';
 
 interface ServicesState {
   services: Service[];
@@ -16,7 +16,7 @@ interface ServicesState {
 export const useServicesStore = create<ServicesState>()(
   persist(
     (set) => ({
-      services: seedData.services as Service[],
+      services: appData.services as Service[],
       isLoading: false,
       lastUpdated: new Date().toISOString(),
 

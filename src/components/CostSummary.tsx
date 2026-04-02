@@ -137,7 +137,7 @@ export function CostSummary({ summary }: CostSummaryProps) {
                     style={{ fontSize: '12px' }}
                   />
                   <Tooltip
-                    formatter={(value: any) => [formatIDR(Number(value)), 'Biaya Bulanan']}
+                    formatter={(value: unknown) => [formatIDR(Number(value)), 'Biaya Bulanan']}
                     cursor={{ fill: 'rgba(0,0,0,0.05)' }}
                   />
                   <Bar

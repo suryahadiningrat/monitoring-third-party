@@ -1,0 +1,324 @@
+{
+  "version": "1.5.0",
+  "lastUpdated": "2026-04-02T00:00:00.000Z",
+  "projects": [
+    {
+      "id": "proj-floothink",
+      "name": "Floothink",
+      "description": "Project internal Floothink",
+      "contacts": [
+        { "name": "TBD", "role": "pm", "waNumber": "" },
+        { "name": "TBD", "role": "tech_lead", "waNumber": "" }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T00:00:00.000Z",
+      "updatedAt": "2026-04-02T00:00:00.000Z"
+    },
+    {
+      "id": "proj-suzuki",
+      "name": "Suzuki Hyperlocal",
+      "description": "Project Suzuki Hyperlocal",
+      "contacts": [
+        { "name": "TBD", "role": "pm", "waNumber": "" },
+        { "name": "TBD", "role": "tech_lead", "waNumber": "" }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T00:00:00.000Z",
+      "updatedAt": "2026-04-02T00:00:00.000Z"
+    },
+    {
+      "id": "proj-idp",
+      "name": "IDP (Integrated Data Platform)",
+      "description": "Project IDP",
+      "contacts": [
+        { "name": "TBD", "role": "pm", "waNumber": "" },
+        { "name": "TBD", "role": "tech_lead", "waNumber": "" }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T00:00:00.000Z",
+      "updatedAt": "2026-04-02T00:00:00.000Z"
+    },
+    {
+      "id": "proj-global",
+      "name": "Global / Shared",
+      "description": "Layanan yang digunakan bersama lintas project",
+      "contacts": [],
+      "isActive": true,
+      "createdAt": "2026-04-02T00:00:00.000Z",
+      "updatedAt": "2026-04-02T00:00:00.000Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "f25b72da-dc63-4728-bdab-8b39f770ec11",
+      "projectId": "proj-floothink",
+      "name": "Niagahoster Domain",
+      "category": "Domain & Hosting",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 150000,
+      "billingCycle": "yearly",
+      "renewalDate": "2026-12-01",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "60fac500-e6d4-45dc-ae5a-7d4c8755c3da",
+      "projectId": "proj-floothink",
+      "name": "Webpushr Push Notif",
+      "category": "Push Notification",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 0,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-15",
+      "apiConfig": { "status": "pending" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "8c9bb8e1-1e32-4bbc-a186-d8a0a10f25a8",
+      "projectId": "proj-floothink",
+      "name": "Mailjet Email Marketing",
+      "category": "Email Marketing",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 200000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-20",
+      "apiConfig": { "status": "pending" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "c4225d95-899a-4559-8bee-0ab0bfe3ab71",
+      "projectId": "proj-floothink",
+      "name": "Ahrefs",
+      "category": "SEO Tools",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 1500000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-01",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "1875ea34-bae7-418c-b434-c7e16cf3fc39",
+      "projectId": "proj-floothink",
+      "name": "Semrush",
+      "category": "SEO Tools",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 1800000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-10",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "23f9e652-6edb-4c8b-9639-5c9ad5741ef7",
+      "projectId": "proj-floothink",
+      "name": "me-QR Code",
+      "category": "QR & Link Tool",
+      "billingType": "subscription",
+      "accounts": [{ "email": "floothink360@gmail.com", "label": "Primary" }],
+      "costPerMonth": 50000,
+      "billingCycle": "yearly",
+      "renewalDate": "2027-03-01",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "300b14e1-4f08-4472-8541-d339605d6d64",
+      "projectId": "proj-global",
+      "name": "Rumahweb",
+      "category": "Domain & Hosting",
+      "billingType": "subscription",
+      "accounts": [
+        { "email": "idealivejkt@gmail.com", "label": "Primary" },
+        { "email": "f3brili0@gmail.com", "label": "Sub-account" }
+      ],
+      "costPerMonth": 300000,
+      "billingCycle": "yearly",
+      "renewalDate": "2026-12-15",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "9b5e76d0-8a55-4f9d-954d-51c8bab6f810",
+      "projectId": "proj-suzuki",
+      "name": "Elastic Email",
+      "category": "Email Marketing",
+      "billingType": "subscription",
+      "accounts": [{ "email": "suzukihyperlocal@gmail.com", "label": "Primary" }],
+      "costPerMonth": 80000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-30",
+      "apiConfig": { "status": "pending" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "b47c6b10-f03d-4a02-a444-b04534cd1b81",
+      "projectId": "proj-idp",
+      "name": "Qiscus WA Notif",
+      "category": "WhatsApp & Notif",
+      "billingType": "hybrid",
+      "budgetCap": 1000000,
+      "accounts": [{ "email": "integrated.data.platform@gmail.com", "label": "Primary" }],
+      "costPerMonth": 500000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-25",
+      "apiConfig": { "status": "pending" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "0777a5c7-7bae-4ee1-a199-61bae7b07ac8",
+      "projectId": "proj-suzuki",
+      "name": "Adsmedia OTP",
+      "category": "WhatsApp & Notif",
+      "billingType": "usage-based",
+      "budgetCap": 500000,
+      "accounts": [{ "email": "suzukihyperlocal@gmail.com", "label": "Primary" }],
+      "costPerMonth": 0,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-05",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "40acf72f-e61f-4459-9c18-ee19dcb3167a",
+      "projectId": "proj-idp",
+      "name": "Google One Drive",
+      "category": "Cloud Storage",
+      "billingType": "subscription",
+      "accounts": [{ "email": "integrated.data.platform@gmail.com", "label": "Primary" }],
+      "costPerMonth": 130000,
+      "billingCycle": "monthly",
+      "renewalDate": "2026-05-10",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "5002046b-4a4d-46f2-a8cc-0fa216828219",
+      "projectId": "proj-global",
+      "name": "Zoom Pro",
+      "category": "Meeting & Collab",
+      "billingType": "subscription",
+      "accounts": [{ "email": "superuser.global@gmail.com", "label": "Primary" }],
+      "costPerMonth": 350000,
+      "billingCycle": "yearly",
+      "renewalDate": "2027-02-01",
+      "apiConfig": { "status": "manual" },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    },
+    {
+      "id": "gcp-suzuki-001",
+      "projectId": "proj-suzuki",
+      "name": "Google Cloud (GCP) - Suzuki",
+      "category": "Cloud Infrastructure",
+      "billingType": "usage-based",
+      "budgetCap": 5000000,
+      "accounts": [{ "email": "suzukihyperlocal@gmail.com", "label": "Primary" }],
+      "costPerMonth": 0,
+      "billingCycle": "monthly",
+      "apiConfig": { "status": "manual" },
+      "usageData": {
+        "currentUsage": 0,
+        "currentUsageCurrency": "IDR",
+        "budgetUsedPercent": 0
+      },
+      "alertRules": [
+        { "threshold": 50, "enabled": true },
+        { "threshold": 80, "enabled": true },
+        { "threshold": 100, "enabled": true }
+      ],
+      "isActive": true,
+      "createdAt": "2026-04-02T10:00:01.464Z",
+      "updatedAt": "2026-04-02T10:00:01.464Z"
+    }
+  ],
+  "alertLogs": []
+}

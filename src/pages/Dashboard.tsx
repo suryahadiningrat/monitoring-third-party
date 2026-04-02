@@ -22,11 +22,20 @@ export function Dashboard() {
         </Button>
       </div>
 
-      {stats.criticalCount > 0 && (
+      {stats.renewalCriticalCount > 0 && (
         <div className="bg-red-50 border border-red-200 text-red-800 rounded-md p-4 flex items-center gap-3">
           <AlertTriangle className="h-5 w-5 text-red-600" />
           <p className="text-sm font-medium">
-            Ada {stats.criticalCount} layanan yang berstatus kritis (jatuh tempo ≤ 7 hari). Segera periksa daftar pengingat.
+            Ada {stats.renewalCriticalCount} layanan yang berstatus kritis (jatuh tempo ≤ 7 hari). Segera periksa daftar pengingat.
+          </p>
+        </div>
+      )}
+
+      {stats.budgetAlertCount > 0 && (
+        <div className="bg-red-50 border border-red-200 text-red-800 rounded-md p-4 flex items-center gap-3">
+          <AlertTriangle className="h-5 w-5 text-red-600" />
+          <p className="text-sm font-medium">
+            Ada {stats.budgetAlertCount} layanan usage-based yang mendekati atau melewati budget cap (≥ 80%). Segera periksa Usage Monitor.
           </p>
         </div>
       )}
@@ -36,19 +45,20 @@ export function Dashboard() {
         <StatCard label="Biaya per Bulan" value={formatIDR(stats.totalMonthly)} />
         <StatCard
           label="Kritis (≤7 Hari)"
-          value={stats.criticalCount}
-          color={stats.criticalCount > 0 ? 'text-red-600' : ''}
+          value={stats.renewalCriticalCount}
+          color={stats.renewalCriticalCount > 0 ? 'text-red-600' : ''}
         />
         <StatCard
           label="Perlu Perhatian"
-          value={stats.warnCount}
-          color={stats.warnCount > 0 ? 'text-amber-600' : ''}
+          value={stats.renewalWarnCount}
+          color={stats.renewalWarnCount > 0 ? 'text-amber-600' : ''}
           sub="≤30 hari"
         />
         <StatCard
-          label="API Connected"
-          value={`${stats.apiConnectedCount} / ${stats.totalServices}`}
-          color="text-green-600"
+          label="Usage Alert"
+          value={stats.budgetAlertCount}
+          color={stats.budgetAlertCount > 0 ? 'text-red-600' : ''}
+          sub="≥80% budget cap"
         />
       </div>
 
@@ -62,7 +72,7 @@ export function Dashboard() {
         open={isFormOpen}
         onClose={() => setIsFormOpen(false)}
         onSubmit={(data) => {
-          addService(data as any);
+          addService(data as Parameters<typeof addService>[0]);
           setIsFormOpen(false);
         }}
       />

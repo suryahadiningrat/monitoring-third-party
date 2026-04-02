@@ -41,7 +41,7 @@ export function formatDate(dateString?: string, formatStr: string = 'd MMM yyyy'
   if (!dateString) return '-';
   try {
     return format(parseISO(dateString), formatStr, { locale: id });
-  } catch (error) {
+  } catch {
     return dateString;
   }
 }

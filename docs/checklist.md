@@ -33,31 +33,31 @@
 
 ---
 
-## Phase 5 — Multi-Project & Usage-Based Billing (v1.5)
+## Phase 5 — Multi-Project & Usage-Based Billing (v1.5) ✅
 
 ### Data Model Refactor
-- [ ] Update src/types/index.ts — tambah interface: `Project`, `AlertContact`, `UsageData`, `AlertRule`, `AlertLog`, `AppData`
-- [ ] Update src/types/index.ts — tambah field di `Service`: `projectId`, `billingType`, `budgetCap`, `usageData`, `alertRules`
-- [ ] Tambah `BillingType` = `'subscription' | 'usage-based' | 'hybrid'`
-- [ ] Tambah `BillingCycle` = `'biannual'` (untuk Qiscus 6 bulanan)
-- [ ] Buat src/data/app-data.json — gabungan projects + services + alertLogs
-- [ ] Migrate seed data ke struktur baru (13 layanan + 3 project awal)
+- [x] Update src/types/index.ts — tambah interface: `Project`, `AlertContact`, `UsageData`, `AlertRule`, `AlertLog`, `AppData`
+- [x] Update src/types/index.ts — tambah field di `Service`: `projectId`, `billingType`, `budgetCap`, `usageData`, `alertRules`
+- [x] Tambah `BillingType` = `'subscription' | 'usage-based' | 'hybrid'`
+- [x] Tambah `BillingCycle` = `'biannual'` (untuk Qiscus 6 bulanan)
+- [x] Buat src/data/app-data.json — gabungan projects + services + alertLogs
+- [x] Migrate seed data ke struktur baru (13 layanan + 3 project awal)
 
 ### Store Refactor
-- [ ] Buat src/store/projects.store.ts — CRUD project, persist localStorage
-- [ ] Update src/store/services.store.ts — tambah projectId, billingType, budgetCap, usageData
-- [ ] Buat src/store/alerts.store.ts — CRUD alert log, persist localStorage
+- [x] Buat src/store/projects.store.ts — CRUD project, persist localStorage
+- [x] Update src/store/services.store.ts — tambah projectId, billingType, budgetCap, usageData
+- [x] Buat src/store/alerts.store.ts — CRUD alert log, persist localStorage
 
 ### Hooks Baru
-- [ ] useProjects() — CRUD project
-- [ ] useServicesByProject(projectId) — filter services per project
-- [ ] useBudgetStatus(serviceId) — hitung budgetUsedPercent, return status
-- [ ] useUsageBasedServices() — filter hanya usage-based, sort by budgetUsedPercent desc
-- [ ] useAlertLogs() — list alert history
+- [x] useProjects() — CRUD project
+- [x] useServicesByProject(projectId) — filter services per project
+- [x] useBudgetStatus(serviceId) — hitung budgetUsedPercent, return status
+- [x] useUsageBasedServices() — filter hanya usage-based, sort by budgetUsedPercent desc
+- [x] useAlertLogs() — list alert history
 
 ### Utils Baru
-- [ ] budget.utils.ts — calcBudgetPercent(), getBudgetStatus(), estimateDaysLeft()
-- [ ] alert.utils.ts — buildAlertMessage(service, project, threshold)
+- [x] budget.utils.ts — calcBudgetPercent(), getBudgetStatus(), estimateDaysLeft()
+- [x] alert.utils.ts — buildAlertMessage(service, project, threshold)
 
 ---
 

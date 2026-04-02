@@ -16,9 +16,9 @@ export function Reminders() {
     safeReminders,
   } = useMemo(() => {
     return {
-      criticalReminders: reminders.filter((r) => r.status === 'danger'),
-      warningReminders: reminders.filter((r) => r.status === 'warn'),
-      safeReminders: reminders.filter((r) => r.status === 'ok'),
+      criticalReminders: reminders.filter((r) => r.renewalStatus === 'danger'),
+      warningReminders: reminders.filter((r) => r.renewalStatus === 'warn'),
+      safeReminders: reminders.filter((r) => r.renewalStatus === 'ok'),
     };
   }, [reminders]);
 

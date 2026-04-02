@@ -51,11 +51,11 @@ export function Services() {
     }
   };
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: Partial<ServiceWithStatus>) => {
     if (editingService) {
       updateService(editingService.id, data);
     } else {
-      addService(data);
+      addService(data as Parameters<typeof addService>[0]);
     }
     setIsFormOpen(false);
     setEditingService(undefined);

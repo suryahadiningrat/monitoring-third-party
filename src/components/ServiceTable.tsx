@@ -97,7 +97,7 @@ export function ServiceTable({ services, onEdit, onDelete }: ServiceTableProps) 
                 </div>
               </TableCell>
               <TableCell>
-                <StatusBadge status={service.status} />
+                <StatusBadge status={service.renewalStatus} />
               </TableCell>
               <TableCell className="text-right">
                 <div className="flex justify-end gap-2">
