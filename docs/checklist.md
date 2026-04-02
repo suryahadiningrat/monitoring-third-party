@@ -47,27 +47,27 @@
 ## Phase 3 — UI Components
 
 ### Base Components (shadcn/ui)
-- [ ] Install: Button, Input, Select, Dialog, Badge, Table, Tabs, Card
-- [ ] Sesuaikan theme warna di `tailwind.config.ts`
+- [x] Install: Button, Input, Select, Dialog, Badge, Table, Tabs, Card
+- [x] Sesuaikan theme warna di `tailwind.config.ts`
 
 ### Custom Components
-- [ ] `StatusBadge.tsx` — props: `status: ServiceStatus`, render badge warna sesuai
-  - [ ] `ok` → hijau
-  - [ ] `warn` → kuning/amber
-  - [ ] `danger` → merah
-  - [ ] `unknown` → abu-abu
-- [ ] `ApiStatusBadge.tsx` — props: `apiStatus: ApiStatus`
-- [ ] `StatCard.tsx` — props: `label`, `value`, `sub`, `color?`
-- [ ] `ServiceTable.tsx`
-  - [ ] Kolom: Nama + ikon inisial, Kategori, Email, Biaya/Bulan, Renewal + days, Status, Aksi
-  - [ ] Fitur sort per kolom
-  - [ ] Empty state ketika tidak ada hasil filter
-- [ ] `ServiceForm.tsx` — form tambah/edit dalam Dialog/Modal
-  - [ ] Field: name, category (dropdown), accounts (email + label), costPerMonth, billingCycle, renewalDate, apiStatus, notes
-  - [ ] Validasi: name wajib, email valid, costPerMonth ≥ 0, renewalDate valid
-- [ ] `ReminderList.tsx` — list item dengan warna dot per status, sorted by renewal
-- [ ] `CostSummary.tsx` — total card + tabel breakdown + mini bar chart (Recharts)
-- [ ] `SearchFilter.tsx` — input search + select status + select kategori
+- [x] `StatusBadge.tsx` — props: `status: ServiceStatus`, render badge warna sesuai
+  - [x] `ok` → hijau
+  - [x] `warn` → kuning/amber
+  - [x] `danger` → merah
+  - [x] `unknown` → abu-abu
+- [x] `ApiStatusBadge.tsx` — props: `apiStatus: ApiStatus`
+- [x] `StatCard.tsx` — props: `label`, `value`, `sub`, `color?`
+- [x] `ServiceTable.tsx`
+  - [x] Kolom: Nama + ikon inisial, Kategori, Email, Biaya/Bulan, Renewal + days, Status, Aksi
+  - [x] Fitur sort per kolom
+  - [x] Empty state ketika tidak ada hasil filter
+- [x] `ServiceForm.tsx` — form tambah/edit dalam Dialog/Modal
+  - [x] Field: name, category (dropdown), accounts (email + label), costPerMonth, billingCycle, renewalDate, apiStatus, notes
+  - [x] Validasi: name wajib, email valid, costPerMonth ≥ 0, renewalDate valid
+- [x] `ReminderList.tsx` — list item dengan warna dot per status, sorted by renewal
+- [x] `CostSummary.tsx` — total card + tabel breakdown + mini bar chart (Recharts)
+- [x] `SearchFilter.tsx` — input search + select status + select kategori
 
 ---
 
