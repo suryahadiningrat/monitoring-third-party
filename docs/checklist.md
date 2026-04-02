@@ -3,17 +3,17 @@
 ## Phase 1 — Setup & Struktur Project
 
 ### Inisialisasi
-- [ ] `npm create vite@latest third-party-monitor -- --template react-ts`
-- [ ] Install dependencies: `npm install tailwindcss @tailwindcss/vite zustand @tanstack/react-query react-router-dom recharts date-fns lucide-react axios`
-- [ ] Install shadcn/ui: `npx shadcn@latest init`
-- [ ] Setup Tailwind CSS config
-- [ ] Setup folder struktur sesuai `stack.md`
-- [ ] Buat file `.env.local` dari template di `stack.md`
-- [ ] Setup ESLint + Prettier
+- [x] `npm create vite@latest third-party-monitor -- --template react-ts`
+- [x] Install dependencies: `npm install tailwindcss @tailwindcss/vite zustand @tanstack/react-query react-router-dom recharts date-fns lucide-react axios`
+- [x] Install shadcn/ui: `npx shadcn@latest init`
+- [x] Setup Tailwind CSS config
+- [x] Setup folder struktur sesuai `stack.md`
+- [x] Buat file `.env.local` dari template di `stack.md`
+- [x] Setup ESLint + Prettier
 
 ### Types & Interfaces
-- [ ] Buat `src/types/index.ts` — implementasi semua interface dari `database.md`
-- [ ] Pastikan TypeScript strict mode aktif di `tsconfig.json`
+- [x] Buat `src/types/index.ts` — implementasi semua interface dari `database.md`
+- [x] Pastikan TypeScript strict mode aktif di `tsconfig.json`
 
 ---
 
