@@ -74,23 +74,23 @@
 ## Phase 4 — Pages & Routing
 
 ### Layout
-- [ ] `src/App.tsx` — setup React Router dengan layout shell (sidebar/navbar)
-- [ ] Sidebar/Navbar dengan link: Dashboard, Layanan, Pengingat, Biaya
+- [x] `src/App.tsx` — setup React Router dengan layout shell (sidebar/navbar)
+- [x] Sidebar/Navbar dengan link: Dashboard, Layanan, Pengingat, Biaya
 
 ### Pages
-- [ ] `Dashboard.tsx`
-  - [ ] Render 5 `StatCard` dari `useDashboardStats()`
-  - [ ] Preview 5 layanan dengan renewal terdekat (`useReminders()`)
-  - [ ] Tombol quick-add layanan baru
-- [ ] `Services.tsx`
-  - [ ] `SearchFilter` + `ServiceTable`
-  - [ ] Tombol "Tambah Layanan" buka `ServiceForm` dialog
-  - [ ] Tombol "Export CSV" trigger `exportToCSV()`
-- [ ] `Reminders.tsx`
-  - [ ] Full list dari `useReminders()`
-  - [ ] Filter: Semua / Kritis / Perlu Perhatian / Aman
-- [ ] `Costs.tsx`
-  - [ ] `CostSummary` component full width
+- [x] `Dashboard.tsx`
+  - [x] Render 5 `StatCard` dari `useDashboardStats()`
+  - [x] Preview 5 layanan dengan renewal terdekat (`useReminders()`)
+  - [x] Tombol quick-add layanan baru
+- [x] `Services.tsx`
+  - [x] `SearchFilter` + `ServiceTable`
+  - [x] Tombol "Tambah Layanan" buka `ServiceForm` dialog
+  - [x] Tombol "Export CSV" trigger `exportToCSV()`
+- [x] `Reminders.tsx`
+  - [x] Full list dari `useReminders()`
+  - [x] Filter: Semua / Kritis / Perlu Perhatian / Aman
+- [x] `Costs.tsx`
+  - [x] `CostSummary` component full width
 
 ---
 

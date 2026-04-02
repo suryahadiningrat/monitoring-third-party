@@ -14,7 +14,7 @@
       ],
       "costPerMonth": 150000,
       "billingCycle": "yearly",
-      "renewalDate": "2025-12-01",
+      "renewalDate": "2026-12-01",
       "apiConfig": {
         "status": "manual"
       },
@@ -34,7 +34,7 @@
       ],
       "costPerMonth": 0,
       "billingCycle": "monthly",
-      "renewalDate": "2025-11-15",
+      "renewalDate": "2026-05-15",
       "apiConfig": {
         "status": "pending"
       },
@@ -54,7 +54,7 @@
       ],
       "costPerMonth": 200000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-10-20",
+      "renewalDate": "2026-05-20",
       "apiConfig": {
         "status": "pending"
       },
@@ -74,7 +74,7 @@
       ],
       "costPerMonth": 1500000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-11-01",
+      "renewalDate": "2026-05-01",
       "apiConfig": {
         "status": "manual"
       },
@@ -94,7 +94,7 @@
       ],
       "costPerMonth": 1800000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-10-10",
+      "renewalDate": "2026-05-10",
       "apiConfig": {
         "status": "manual"
       },
@@ -114,7 +114,7 @@
       ],
       "costPerMonth": 50000,
       "billingCycle": "yearly",
-      "renewalDate": "2026-03-01",
+      "renewalDate": "2027-03-01",
       "apiConfig": {
         "status": "manual"
       },
@@ -138,7 +138,7 @@
       ],
       "costPerMonth": 300000,
       "billingCycle": "yearly",
-      "renewalDate": "2025-12-15",
+      "renewalDate": "2026-12-15",
       "apiConfig": {
         "status": "manual"
       },
@@ -158,7 +158,7 @@
       ],
       "costPerMonth": 80000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-11-30",
+      "renewalDate": "2026-05-30",
       "apiConfig": {
         "status": "pending"
       },
@@ -178,7 +178,7 @@
       ],
       "costPerMonth": 500000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-10-25",
+      "renewalDate": "2026-05-25",
       "apiConfig": {
         "status": "pending"
       },
@@ -198,7 +198,7 @@
       ],
       "costPerMonth": 200000,
       "billingCycle": "monthly",
-      "renewalDate": "2026-01-01",
+      "renewalDate": "2026-05-05",
       "apiConfig": {
         "status": "manual"
       },
@@ -218,7 +218,7 @@
       ],
       "costPerMonth": 130000,
       "billingCycle": "monthly",
-      "renewalDate": "2025-11-10",
+      "renewalDate": "2026-05-10",
       "apiConfig": {
         "status": "manual"
       },
@@ -238,7 +238,7 @@
       ],
       "costPerMonth": 350000,
       "billingCycle": "yearly",
-      "renewalDate": "2026-02-01",
+      "renewalDate": "2027-02-01",
       "apiConfig": {
         "status": "manual"
       },
